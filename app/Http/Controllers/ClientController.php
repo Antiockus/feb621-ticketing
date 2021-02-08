@@ -16,9 +16,9 @@ class ClientController extends Controller
     public function index()
     {
         //
-        $tickets = Ticket::all();
+        $clients = Client::all();
 
-        return view('dashboard.clients',[]);
+        return view('dashboard.clients',['clients' => $clients]);
     }
 
     /**
@@ -28,6 +28,7 @@ class ClientController extends Controller
      */
     public function create()
     {
+        return view('dashboard.create_client');
         //
     }
 
@@ -39,7 +40,16 @@ class ClientController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validation = $request->validate([
+            'name' => ['required'],
+            'email' => ['email', 'required']
+        ]);
+        $newClient = new Client();
+        $newClient->name = $request['name'];
+        $newClient->email = $request['email'];
+        $newClient->save();
+
+        return redirect('/dashboard/clients');
     }
 
     /**

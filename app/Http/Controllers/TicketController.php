@@ -14,6 +14,9 @@ class TicketController extends Controller
      */
     public function index()
     {
+        $tickets = Ticket::all();
+
+        return view('dashboard.tickets',['tickets' => $tickets]);
         //
     }
 
@@ -24,7 +27,8 @@ class TicketController extends Controller
      */
     public function create()
     {
-        //
+        
+        return view('dashboard.create_ticket', []);
     }
 
     /**
@@ -36,6 +40,14 @@ class TicketController extends Controller
     public function store(Request $request)
     {
         //
+        $newTicket = new Ticket();
+
+        $newTicket->title = $request['title'];
+        $newTicket->description = $request['description'];
+
+        $newTicket->save();
+
+        return redirect('/dashboard/tickets');
     }
 
     /**
