@@ -1,8 +1,11 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Clients') }}
+            {{ __('Clients') }} || <a href="{{ route('create_client') }}" class="bg-blue-500 rounded-lg font-bold text-white text-center px-4 py-3 transition duration-300 ease-in-out hover:bg-blue-600 mr-6">
+                Create Client
+            </a>
         </h2>
+        
     </x-slot>
 
     <div class="py-12">
@@ -12,7 +15,7 @@
                     
                     <ul>
                         @foreach( $clients as $client)
-                            <li>{{$client->name}}</li>
+                            <li><a href="/dashboard/clients/{{$client->id}}">{{$client->name}}</a></li>
                         @endforeach
                     </ul>
                 </div>
