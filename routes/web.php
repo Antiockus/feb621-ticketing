@@ -35,6 +35,7 @@ Route::middleware(['auth'])->group(function(){
     
     Route::get('/dashboard/clients', [ClientController::class,'index'])->name('clients');
     Route::get('/dashboard/clients/create_client', [ClientController::class,'create'])->name('create_client');
+    Route::delete('/dashboard/clients/{client}/delete', [ClientController::class,'destroy'])->name('delete_client');
 
 
     Route::get('/dashboard/clients/{client}', [ClientController::class,'show'])->name('client');
