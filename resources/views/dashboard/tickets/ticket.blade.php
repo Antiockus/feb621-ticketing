@@ -27,9 +27,14 @@
                     <a href="#" class="bg-green-500 rounded-lg font-bold text-white text-center px-4 py-3 transition duration-300 ease-in-out hover:bg-green-600 mr-6">
                         Edit
                       </a>
-                    <a href="#" class="bg-red-500 rounded-lg font-bold text-white text-center px-4 py-3 transition duration-300 ease-in-out hover:bg-red-600 mr-6">
-                       Delete
-                     </a>
+                      <form method="POST" action="/dashboard/tickets/{{$ticket->id}}/delete"class="">
+                        {{ csrf_field() }}
+                        {{ method_field('DELETE') }}
+                
+                        <div class="form-group">
+                            <input type="submit" class="bg-red-500 rounded-lg font-bold text-white text-center px-4 py-3 transition duration-300 ease-in-out hover:bg-red-600 mr-6 delete-user" value="Delete ticket">
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
