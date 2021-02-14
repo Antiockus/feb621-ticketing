@@ -71,6 +71,7 @@ class TicketController extends Controller
     public function edit(Ticket $ticket)
     {
         //
+        return view('dashboard.tickets.editTicket', ['ticket'=>$ticket]);
     }
 
     /**
@@ -83,6 +84,8 @@ class TicketController extends Controller
     public function update(Request $request, Ticket $ticket)
     {
         //
+        $ticket->update($request->all());
+        return redirect('/dashboard/tickets/' .$ticket->id);
     }
 
     /**

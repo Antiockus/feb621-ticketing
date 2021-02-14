@@ -31,7 +31,8 @@ Route::middleware(['auth'])->group(function(){
     Route::get('/dashboard/tickets/create_ticket', [TicketController::class, 'create'])->name('createTicket');
     Route::post('/dashboard/tickets/saveTicket', [TicketController::class, 'store'])->name('saveTicket');
     Route::get('/dashboard/tickets/{ticket}', [TicketController::class, 'show'])->name('singleTicket');
-    
+    Route::get('/dashboard/tickets/{ticket}/edit', [TicketController::class, 'edit']);
+    Route::put('/dashboard/tickets/{ticket}/update', [TicketController::class, 'update']);
     Route::delete('/dashboard/tickets/{ticket}/delete', [TicketController::class, 'destroy'])->name('deleteTicket');
     
     
